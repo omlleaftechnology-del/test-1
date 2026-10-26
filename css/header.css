@@ -159,3 +159,9 @@ footer .brand-logo { display:block;object-position:left center; }
 .property-picture .round { display:flex;align-items:center;justify-content:center;padding:0;line-height:0; }
 .property-picture .round::after { content:none;display:none; }
 .property-picture .round .arrow-icon { width:24px;height:24px;display:block;vertical-align:initial; }
+.back-to-top { position:fixed;right:22px;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:20;display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid #ffffff55;border-radius:50%;background:#315f47;color:#f8fbf2;box-shadow:0 4px 18px #16332526;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s,transform .2s; }
+.back-to-top svg { width:20px;height:20px; }
+.back-to-top:hover { background:#244c38;transform:translateY(-2px); }
+.back-to-top:focus-visible { outline:2px solid #78965e;outline-offset:4px; }
+.back-to-top[hidden],body:has(dialog[open]) .back-to-top { display:none; }
+@media(max-width:760px) { .back-to-top { right:17px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:40px;height:40px; } }
