@@ -24,6 +24,7 @@ Pivert.applyListings = records => {
     const card=el('article','property');card.dataset.type=record.type;
     const picture=el('button','property-picture');picture.type='button';picture.dataset.detail=record.id;
     const image=el('img');image.src=record.photos[0]||'assets/listing-placeholder.svg';image.alt=title;image.loading='lazy';picture.append(image,el('span','tag',record.status==='project'?'PROJET · 3D':tags[record.type]),el('span','round','↗'));
+    const arrow=picture.querySelector('.round');arrow.textContent='';arrow.innerHTML='<svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>';
     picture.append(el('span','picture-note',record.realPhotos?'Photos du local':(seed.galleryNote||'Photo d’ambiance')));
     card.append(picture,el('p','location',record.city),el('h3','',title),el('p','card-description',fr.summary||fr.description.slice(0,110)),el('p','spec',record.area||'À confirmer'),el('p','card-address',record.address));
     const price=el('div','price');price.append(el('strong','',record.price||'Sur demande'),el('span','listing-state',stateLabels[record.status]));card.append(price);container.append(card);
