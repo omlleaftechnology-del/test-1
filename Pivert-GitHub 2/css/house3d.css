@@ -1,0 +1,38 @@
+.model-tabs { display:flex; gap:6px; margin-bottom:12px; }
+.model-tabs[hidden],.model-panel[hidden],#gallery-thumbnails[hidden],.gallery-stage[hidden] { display:none; }
+.model-tabs button { border:1px solid #d4ddca; background:transparent; color:#315f47; padding:10px 16px; font-size:12px; border-radius:6px; }
+.model-tabs button[aria-pressed="true"] { background:#315f47; color:#fff; border-color:#315f47; }
+#house-canvas { display:block; width:100%; height:390px; border-radius:10px; cursor:grab; touch-action:none; }
+#house-canvas:active { cursor:grabbing; }
+#detail .model-badge { font-size:10px; color:#65785d; margin:12px 0; }
+.model-controls { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.model-controls label { font-size:11px; }
+.model-controls input { margin:8px 0; padding:0; accent-color:#315f47; }
+.model-controls button { justify-self:start; padding:9px 12px; border:1px solid #cdd7c5; border-radius:5px; color:#315f47; background:transparent; font-size:11px; }
+#detail .model-help { font-size:10px; color:#77836c; margin:15px 0 0; line-height:1.6; }
+@media(max-width:760px) { #house-canvas { height:300px; } }
+/* Larger presentation view for architectural inspection. */
+#detail.model-open { width:1250px; }
+.model-open .detail-layout { grid-template-columns:1fr; }
+.model-open .detail-gallery { position:relative; padding:22px; background:#f0f3ee; }
+.model-open #house-canvas { height:min(62vh,630px); min-height:420px; }
+.model-open .model-controls { grid-template-columns:1fr 1fr auto; align-items:center; max-width:720px; }
+.model-open .model-controls button { align-self:end; margin-bottom:9px; }
+.model-open .detail-info { padding:32px; }
+.model-open .detail-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:25px; }
+.model-open .detail-facts>div { grid-template-columns:1fr; gap:8px; }
+@media(max-width:760px) {
+ .model-open .detail-gallery { padding:12px; }
+ .model-open #house-canvas { min-height:310px; height:47vh; }
+ .model-open .model-controls { grid-template-columns:1fr 1fr; }
+ .model-open .detail-facts { grid-template-columns:1fr; gap:0; }
+ .model-open .detail-info { padding:24px; }
+}
+/* The supplied viewer owns its camera, floor selection and section controls. */
+.model-open .detail-gallery:has(.supplied-model) { padding:14px; }
+#supplied-house-model { display:block; width:100%; height:min(76vh,840px); min-height:560px; border:1px solid #d7ddd0; border-radius:12px; background:#f3f1ec; }
+@media(max-width:700px) { #supplied-house-model { height:76vh; min-height:520px; } .model-open .detail-gallery:has(.supplied-model) { padding:8px; } }
+.supplied-model { position:relative; }
+.model-loading-state { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:18px; background:#f3f1ec; color:#315f47; font-size:14px; border-radius:12px; }
+.model-loading-state button { border:1px solid #c5d1bc; border-radius:6px; padding:10px 18px; color:#315f47; background:white; }
+.model-loading-state button[hidden] { display:none; }

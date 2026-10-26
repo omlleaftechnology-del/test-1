@@ -1,0 +1,24 @@
+/* Balanced contact hierarchy and matching contact rows. */
+.contact-copy { align-self:center; min-width:0; }
+.contact .contact-copy>.eyebrow { margin:0 0 28px; }
+.contact .contact-copy h2 { font-size:clamp(42px,4.2vw,62px); line-height:1.12; letter-spacing:-2px; margin:0; }
+.contact .contact-copy>p:not(.eyebrow) { margin:24px 0 0; font-size:14px; line-height:1.75; }
+.contact-methods { margin-top:38px; max-width:420px; }
+.contact-method { display:block; padding:20px 0; border-top:1px solid #ffffff26; }
+.contact-method-label { display:block; font-size:10px; letter-spacing:1px; color:#c0d2bc; margin-bottom:10px; }
+.contact-method-value { display:flex; justify-content:space-between; align-items:center; gap:16px; color:#f4f5eb; font-size:25px; font-weight:450; letter-spacing:-.5px; line-height:1.4; }
+.contact-method-value>span { color:#d7e8ac; font-size:24px; transition:transform .2s; }
+.contact-method:hover .contact-method-value>span { transform:translate(2px,-2px); }
+@media(max-width:1000px) { .contact-method-value { font-size:22px; } }
+@media(max-width:760px) {
+ .contact-copy { align-self:start; }
+ .contact .contact-copy h2 { font-size:46px; }
+ .contact .contact-copy>.eyebrow { margin-bottom:24px; }
+ .contact .contact-copy>p:not(.eyebrow) { margin-top:20px; }
+ .contact-methods { max-width:none; margin-top:28px; }
+ .contact-method { padding:18px 0; }
+ .contact-method-value { font-size:23px; }
+}
+.contact-facebook .facebook-identity { display:inline-flex; align-items:center; gap:12px; color:#f4f5eb; font-size:inherit; }
+.facebook-icon { display:block; width:25px; height:25px; flex-shrink:0; color:#e0ebce; }
+.contact-facebook:hover .facebook-identity { transform:none; }

@@ -1,0 +1,308 @@
+:root{
+--green:#315f47;
+--lime:#e3ecd8;
+--paper:#fbfcf9;
+--muted:#748074}
+header{
+height:110px;
+background:#fff;
+max-width:none}
+.brand{
+display:block;
+line-height:0;
+flex-shrink:0}
+.brand-logo{
+width:222px;
+height:75px;
+object-fit:contain;
+mix-blend-mode:multiply}
+header nav{
+font-size:13px;
+gap:38px}
+.hero{
+display:block;
+position:relative;
+max-width:none;
+margin:0 24px;
+padding:0;
+min-height:650px;
+border-radius:18px;
+overflow:hidden;
+background:#24392e;
+color:white}
+.hero-image{
+position:absolute;
+inset:0;
+min-height:0;
+border-radius:0;
+z-index:0}
+.hero-image>img{
+object-position:center 59%}
+.hero-image:after{
+background:linear-gradient(90deg,rgba(9,28,21,.82),rgba(16,39,29,.48) 47%,rgba(10,31,21,.05))}
+.hero-copy{
+position:relative;
+z-index:2;
+padding:90px 6% 65px;
+max-width:850px}
+.hero .eyebrow{
+color:#e3eddc;
+margin-bottom:35px;
+font-size:10px}
+.hero .eyebrow i{
+background:#b8d5a6}
+h1{
+font-size:clamp(65px,7.3vw,110px);
+letter-spacing:-5px;
+font-weight:500;
+margin-bottom:27px;
+line-height:1.03}
+.hero em{
+color:#d0e2b8}
+.intro{
+color:#e1e9df;
+font-size:17px;
+max-width:none}
+.hero .btn{
+background:#e0ebce;
+color:#24452f;
+padding:19px 24px}
+.hero .text-link{
+color:white}
+.hero .actions{
+margin-top:35px}
+.hero-foot{
+max-width:430px;
+color:#dde7d9;
+border-color:#ffffff33;
+margin-top:50px}
+.hero-foot span:before{
+color:#d1e0c0}
+.image-top{
+display:none}
+.image-caption{
+left:auto;
+bottom:55px;
+right:45px;
+gap:25px}
+.image-caption strong{
+font-size:16px}
+.image-caption a{
+width:42px;
+height:42px}
+.photo-label{
+left:auto;
+right:45px;
+bottom:23px}
+.ribbon{
+border-top:0;
+margin:0 6%;
+padding:30px 0;
+justify-content:space-between;
+color:var(--green);
+font-size:12px}
+.ribbon a:hover{
+opacity:.65}
+.section{
+padding-top:76px;
+padding-bottom:76px}
+h2{
+font-size:47px;
+letter-spacing:-2px}
+.section .eyebrow{
+font-size:9px;
+letter-spacing:1.8px}
+.property-picture{
+height:290px;
+border-radius:12px}
+.property h3{
+font-size:20px}
+.service-grid article{
+padding:33px 36px;
+border:1px solid #e0e6da}
+.service-grid h3{
+font-size:32px}
+.service-icon{
+font-size:42px;
+margin-bottom:28px}
+.service-grid p{
+font-size:14px}
+.contact{
+margin:25px;
+border-radius:18px;
+gap:10%;
+padding:75px 6%}
+.contact h2{
+font-size:68px;
+letter-spacing:-3px}
+.contact>div>p:not(.eyebrow){
+font-size:14px}
+.contact-phone{
+margin-top:45px}
+.contact form{
+box-shadow:0 15px 50px #0e2b1b20}
+footer{
+border:0;
+padding:40px 6%}
+footer .brand-logo{
+width:195px;
+height:70px}
+footer>small{
+border-top:1px solid var(--line);
+padding-top:25px}
+.contact .eyebrow{
+color:#dbe9cf}
+@media(max-width:1000px){
+.hero-copy{
+max-width:700px}
+.image-caption{
+display:none}
+.hero{
+min-height:600px}
+h1{
+font-size:85px}
+.actions{
+flex-direction:row;
+align-items:center}
+.contact{
+gap:5%}
+.contact h2{
+font-size:54px}
+}
+@media(max-width:700px){
+header{
+height:87px;
+padding:0 5%}
+.brand-logo{
+width:168px;
+height:60px}
+.btn.small{
+font-size:11px;
+padding:11px 13px}
+.hero{
+margin:0 12px;
+min-height:615px;
+border-radius:13px}
+.hero-copy{
+padding:67px 7% 50px}
+.hero-image{
+min-height:0}
+.hero-image>img{
+object-position:62% center}
+.hero-image:after{
+background:linear-gradient(90deg,#102a1fe0,#102a1f66)}
+h1{
+font-size:66px;
+letter-spacing:-3.7px;
+line-height:1.08}
+.hero .eyebrow{
+font-size:8px;
+letter-spacing:1.6px;
+margin-bottom:36px}
+.intro{
+font-size:14px;
+max-width:240px;
+line-height:1.8}
+.hero .actions{
+gap:22px;
+flex-wrap:wrap;
+margin-top:30px}
+.hero .btn{
+padding:17px 19px;
+font-size:12px}
+.hero-foot{
+font-size:9px;
+gap:17px;
+line-height:1.5;
+margin-top:44px;
+padding-top:22px}
+.photo-label{
+right:18px;
+bottom:13px;
+font-size:8px}
+.ribbon{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:22px 12px;
+margin:0 7%;
+padding:27px 0;
+font-size:11px}
+.section{
+padding:52px 6%}
+.section-heading h2{
+font-size:37px}
+.section-heading>p{
+margin-top:14px}
+.property-picture{
+height:280px}
+.service-grid article{
+padding:28px}
+.service-grid h3{
+font-size:29px}
+.contact{
+margin:12px;
+padding:45px 6%;
+gap:30px;
+border-radius:13px}
+.contact h2{
+font-size:53px}
+.contact-phone{
+margin-top:25px;
+font-size:25px}
+.contact form{
+padding:23px}
+.contact .form-row{
+grid-template-columns:1fr}
+.contact label{
+font-size:11px}
+footer .brand-logo{
+width:175px;
+height:60px}
+footer p{
+font-size:10px}
+footer>small{
+margin-top:0}
+fieldset{
+flex-wrap:wrap}
+}
+
+/* Hero: one headline and two direct rental categories. */
+.hero-copy { padding-top:125px; padding-bottom:100px; }
+.hero .actions { gap:32px; }
+.hero .actions .btn { min-width:160px; }
+.hero .actions .text-link { font-size:13px; gap:23px; padding:17px 0; border-bottom:1px solid #ffffff66; }
+@media(max-width:760px) {
+  .hero { min-height:540px; }
+  .hero-copy { padding-top:90px; padding-bottom:75px; }
+  .hero .actions { gap:25px; }
+  .hero .actions .btn { min-width:135px; }
+  .hero .actions .text-link { font-size:12px; gap:15px; }
+}
+/* Compact three-service layout with matching line icons. */
+#services { padding-top:56px; padding-bottom:56px; }
+#services .section-heading { margin-bottom:27px; }
+#services .eyebrow { margin-bottom:15px; }
+#services h2 { font-size:36px; line-height:1.2; letter-spacing:-1.4px; }
+#services .service-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+#services .service-grid article { display:flex; flex-direction:column; padding:25px; border-radius:11px; min-width:0; }
+#services .service-icon { display:grid; place-items:center; width:48px; height:48px; background:#eaf0e1; border-radius:12px; color:#527445; margin:0 0 22px; }
+#services .service-icon svg { width:28px; height:28px; }
+#services .service-number { top:27px; right:25px; font-size:10px; }
+#services .service-grid h3 { font-size:23px; line-height:1.3; letter-spacing:-.5px; margin:0 0 12px; }
+#services .service-grid p { font-size:13px; line-height:1.7; margin:0 0 23px; }
+#services .service-grid .text-link { margin-top:auto; padding-top:17px; font-size:11px; }
+#request-form fieldset { flex-wrap:wrap; row-gap:12px; }
+@media(max-width:1000px) {
+ #services .service-grid { gap:15px; }
+ #services .service-grid article { padding:22px; }
+ #services .service-grid h3 { font-size:21px; min-height:2.6em; }
+}
+@media(max-width:700px) {
+ #services { padding-top:42px; padding-bottom:42px; }
+ #services h2 { font-size:30px; }
+ #services .service-grid { grid-template-columns:1fr; gap:14px; }
+ #services .service-grid article { padding:22px; }
+ #services .service-icon { width:43px; height:43px; margin-bottom:16px; }
+ #services .service-grid h3 { font-size:22px; min-height:0; margin-bottom:9px; }
+ #services .service-grid p { margin-bottom:18px; }
+}
