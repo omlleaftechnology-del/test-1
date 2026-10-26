@@ -90,3 +90,31 @@ body.admin-mode { background:#f5f7f1; }
 .admin-sidebar>a,.admin-nav { line-height:1.5; }
 .editor-footer button { white-space:normal; }
 #admin-root input[hidden] { display:none; }
+/* Keep the editor inside Safari's visible viewport, with only its body scrolling. */
+#admin-editor {
+  position:fixed;inset:0;margin:auto;overflow:hidden;
+  width:880px;max-width:calc(100% - 24px);
+  max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);
+  border-radius:16px;box-sizing:border-box;
+}
+#admin-editor[open] { display:flex;flex-direction:column; }
+#admin-form { display:flex;flex-direction:column;min-height:0;width:100%;max-height:inherit;overflow:hidden; }
+#admin-form .editor-heading { flex-shrink:0;gap:16px; }
+#admin-form .editor-heading>div { min-width:0; }
+#admin-form .editor-heading h2 { line-height:1.2;margin:0;overflow-wrap:anywhere; }
+#admin-form .editor-body { overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;min-height:0;flex:1 1 auto; }
+#admin-form .editor-footer { position:static;flex-shrink:0; }
+#admin-editor:focus,#editor-close:focus { outline:none; }
+#editor-close { flex-shrink:0;display:grid;place-items:center;padding:0;line-height:1;-webkit-tap-highlight-color:transparent; }
+#editor-close:focus-visible { outline:2px solid #527a5e;outline-offset:3px; }
+body:has(#admin-editor[open]) { overflow:hidden; }
+@media(max-width:650px) {
+  #admin-editor { max-height:calc(100dvh - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)); }
+  #admin-form .editor-heading { padding:18px 20px; }
+  #admin-form .editor-heading h2 { font-size:22px;letter-spacing:-.5px; }
+  #admin-form .editor-body { padding:20px; }
+  #admin-form .editor-footer { padding:12px;gap:8px; }
+  #admin-form .editor-footer>div { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+  #admin-form .editor-footer button { min-height:40px;padding:9px 10px;line-height:1.4;white-space:normal;font-size:11px; }
+  #admin-form input:not([type=checkbox]):not([type=file]),#admin-form textarea,#admin-form select { font-size:16px; }
+}

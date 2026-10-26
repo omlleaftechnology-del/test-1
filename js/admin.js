@@ -52,7 +52,7 @@ Pivert.initAdmin = async () => {
   function openEditor(record){
     editing=record?structuredClone(record):null;photos=[...(record?.photos||[])];texts={};for(const lang of ['fr','en','ru','es'])texts[lang]={...(record?.text[lang]||{})};language='fr';
     modelFile=record?.model||null;renderModel();form.reset();for(const key of ['type','status','city','address','area','price'])form.elements[key].value=record?.[key]||({type:'residential',status:'available'}[key]||'');form.elements.realPhotos.checked=record?.realPhotos??true;
-    root.querySelector('#editor-title').textContent=record?'Редактировать объект':'Новый объект';root.querySelector('#editor-status').textContent='';fillLanguage();renderPhotos();dialog.showModal();
+    root.querySelector('#editor-title').textContent=record?'Редактировать объект':'Новый объект';root.querySelector('#editor-status').textContent='';fillLanguage();renderPhotos();dialog.setAttribute("tabindex","-1");dialog.showModal();root.querySelector(".editor-body").scrollTop=0;dialog.focus({preventScroll:true});
   }
   function readRecord(publication){
     if(modelBusy)throw Error('Дождитесь загрузки 3D-модели.');
