@@ -623,3 +623,10 @@ Pivert.locales.ru = Pivert.translations;
 Object.assign(Pivert.locales.en, {'Disponible':'Available','Réservé':'Reserved','Loué':'Rented','Projet':'Project','Espace gestion ↗':'Manage listings ↗'});
 Object.assign(Pivert.locales.es, {'Disponible':'Disponible','Réservé':'Reservado','Loué':'Alquilado','Projet':'Proyecto','Espace gestion ↗':'Gestionar anuncios ↗'});
 Object.assign(Pivert.locales.ru, {'Disponible':'Свободно','Réservé':'Зарезервировано','Loué':'Сдано','Projet':'Проект','Espace gestion ↗':'Управление объектами ↗'});
+
+// Footer labels use separate SVG icons rather than emoji characters.
+for(const dictionary of Object.values(Pivert.locales)){
+ for(const [key,value] of Object.entries(dictionary)){
+  if(key.includes('↗'))dictionary[key.replace('↗','').trim()]=value.replace('↗','').trim();
+ }
+}
