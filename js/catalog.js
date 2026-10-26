@@ -102,7 +102,10 @@ Pivert.initCatalog = () => {
         thumbnails.append(thumb);
       });
       showPhoto(0);
+      dialog.setAttribute("tabindex", "-1");
       dialog.showModal();
+      dialog.scrollTop = 0;
+      dialog.focus({preventScroll:true});
     });
   });
 

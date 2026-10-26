@@ -36,3 +36,35 @@
 .model-loading-state { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:18px; background:#f3f1ec; color:#315f47; font-size:14px; border-radius:12px; }
 .model-loading-state button { border:1px solid #c5d1bc; border-radius:6px; padding:10px 18px; color:#315f47; background:white; }
 .model-loading-state button[hidden] { display:none; }
+/* iOS Safari: constrain the dialog to the visible viewport, not the page. */
+#detail {
+  position:fixed;
+  inset:0;
+  margin:auto;
+  box-sizing:border-box;
+  max-height:calc(100vh - 32px);
+  max-height:calc(100dvh - 32px);
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+body:has(#detail[open]) { overflow:hidden; }
+#detail:focus { outline:none; }
+#detail .close { -webkit-tap-highlight-color:transparent;display:grid;place-items:center;padding:0; }
+#detail .close:focus { outline:none; }
+#detail .close:focus-visible { outline:2px solid #527a5e;outline-offset:3px; }
+@media(max-width:760px) {
+  #detail,#detail.model-open {
+    width:calc(100% - 24px);
+    max-width:calc(100% - 24px);
+    max-height:calc(100vh - 32px);
+    max-height:calc(100dvh - 32px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+    border-radius:16px;
+  }
+  #detail .close { width:36px;height:36px;top:12px;right:12px; }
+  #detail .detail-gallery { padding:12px;padding-top:58px; }
+  #detail .model-tabs { padding-right:0;flex-wrap:wrap; }
+  #detail #supplied-house-model { height:58vh;height:58svh;min-height:280px;max-height:560px; }
+  #detail .detail-info { padding:24px 20px; }
+  #detail h2 { font-size:clamp(23px,6.5vw,29px);line-height:1.2;overflow-wrap:anywhere; }
+  .detail-facts dd { overflow-wrap:anywhere; }
+}
