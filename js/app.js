@@ -1,6 +1,7 @@
 (async () => {
 // Small entry point. Load feature files before this script.
 const params=new URLSearchParams(location.search);
+Pivert.content.init();
 try {
   await Pivert.listings.init();
   const records=await Pivert.listings.all();
@@ -18,6 +19,8 @@ try {
   }
   console.warn('Local listings unavailable; showing bundled catalog.',error);
 }
+Pivert.contacts.apply();
+try{await Pivert.applySiteMedia();}catch(error){console.warn("Local media unavailable",error);}
 Pivert.initHouse3D();
 Pivert.initCatalog();
 Pivert.initNavigation();

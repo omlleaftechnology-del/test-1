@@ -49,6 +49,7 @@
     document.querySelectorAll('[data-language]').forEach(button => {
       button.setAttribute('aria-pressed', button.dataset.language === Pivert.language);
     });
+    Pivert.content?.apply();
     Pivert.updateCount?.();
     Pivert.refreshModelLanguage?.();
     try { localStorage.setItem('pivert-language-v3', Pivert.language); } catch {}

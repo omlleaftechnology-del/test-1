@@ -97,11 +97,14 @@ Pivert.initAdmin = async () => {
     try{modelFile=await Pivert.readGLB(file);renderModel();status.textContent='Модель добавлена. Сохраните объявление.';}catch(error){status.textContent=error.message;}finally{modelBusy=false;event.target.value='';}
   };
   root.querySelector('#admin-export').onclick=async()=>{
-    const blob=new Blob([JSON.stringify({format:'pivert-listings',version:1,exportedAt:new Date().toISOString(),records:await Pivert.listings.all()},null,2)],{type:'application/json'});const link=document.createElement('a'),url=URL.createObjectURL(blob);link.href=url;link.download='Pivert-backup-'+new Date().toISOString().slice(0,10)+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notice('Резервная копия подготовлена. Храните её вместе с файлами сайта.');
+    const blob=new Blob([JSON.stringify({format:'pivert-listings',version:1,exportedAt:new Date().toISOString(),content:Pivert.content.get(),contacts:Pivert.contacts.get(),records:await Pivert.listings.all()},null,2)],{type:'application/json'});const link=document.createElement('a'),url=URL.createObjectURL(blob);link.href=url;link.download='Pivert-backup-'+new Date().toISOString().slice(0,10)+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notice('Резервная копия подготовлена. Храните её вместе с файлами сайта.');
   };
   root.querySelector('#admin-import').onchange=async event=>{
-    try{const file=event.target.files[0];if(!file)return;if(file.size>100*1024*1024)throw Error('Файл слишком большой.');const backup=JSON.parse(await file.text());if(backup.format!=='pivert-listings'||backup.version!==1||!Array.isArray(backup.records))throw Error('Это не резервная копия Pivert.');await Pivert.listings.importRecords(backup.records);records=await Pivert.listings.all();render();notice('Объекты из резервной копии сохранены на этом устройстве.');}catch(e){notice('Не удалось импортировать: '+e.message);}event.target.value='';
+    try{const file=event.target.files[0];if(!file)return;if(file.size>100*1024*1024)throw Error('Файл слишком большой.');const backup=JSON.parse(await file.text());if(backup.format!=='pivert-listings'||backup.version!==1||!Array.isArray(backup.records))throw Error('Это не резервная копия Pivert.');if(backup.content)Pivert.content.validate(backup.content);if(backup.contacts)Pivert.contacts.validate(backup.contacts);await Pivert.listings.importRecords(backup.records);if(backup.contacts)Pivert.contacts.save(backup.contacts);if(backup.content)Pivert.content.save(backup.content);records=await Pivert.listings.all();render();notice('Объекты из резервной копии сохранены на этом устройстве.');}catch(e){notice('Не удалось импортировать: '+e.message);}event.target.value='';
   };
   render();
+  Pivert.initContactEditor(root);
+  Pivert.initContentEditor(root);
+  await Pivert.initSiteManager(root);
   Pivert.initAdminLanguage(root);
 };

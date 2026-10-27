@@ -118,7 +118,7 @@ Pivert.initAdminLanguage = root => {
     observer.disconnect();document.documentElement.lang=lang;document.title='Pivert — '+translate('Мои объекты');
     const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;
     while(node=walker.nextNode()){
-      if(node.parentElement.closest('script,style,textarea,.admin-interface-languages,.admin-listing-info h3,.admin-listing-info p,.admin-listing-meta'))continue;
+      if(node.parentElement.closest('script,style,textarea,.admin-interface-languages,.admin-listing-info h3,.admin-listing-info p,.admin-listing-meta,.enquiry-message,.enquiry-contact,.enquiry-card>h3,.enquiry-card>summary strong'))continue;
       if(!originals.has(node)||last.get(node)!==node.textContent)originals.set(node,node.textContent);
       const value=translate(originals.get(node));node.textContent=value;last.set(node,value);
     }

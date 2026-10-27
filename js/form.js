@@ -7,7 +7,7 @@ Pivert.initForm = () => {
     ru:{greeting:'Здравствуйте, Pivert!',request:'Тема',name:'Имя',email:'Почта',phone:'Телефон',date:'Желаемая дата',extras:'Дополнительные услуги',unspecified:'Не указан',discuss:'Обсудим',none:'Не нужны',thanks:'Спасибо!',subject:'Заявка'},
     es:{greeting:'Hola Pivert:',request:'Mi solicitud',name:'Nombre',email:'Correo',phone:'Teléfono',date:'Fecha deseada',extras:'Servicios adicionales',unspecified:'No indicado',discuss:'A convenir',none:'Ninguno',thanks:'¡Gracias!',subject:'Solicitud'}
   };
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     const data = new FormData(form), c = copy[Pivert.language];
@@ -18,9 +18,11 @@ Pivert.initForm = () => {
       `${c.phone}: ${data.get('phone') || c.unspecified}`,
       `${c.date}: ${data.get('date') || c.discuss}`,
       `${c.extras}: ${extras || c.none}`,'',data.get('message'),'',c.thanks];
-    location.href = 'mailto:info@pivert.ca?subject=' + encodeURIComponent(c.subject+' — '+request)
+    let locallySaved=false;
+    try{await Pivert.captureRequest(data);locallySaved=true;}catch(error){console.warn('Local enquiry could not be saved',error);}
+    location.href = 'mailto:'+Pivert.contacts.get().email+'?subject=' + encodeURIComponent(c.subject+' — '+request)
       + '&body=' + encodeURIComponent(lines.join('\n'));
     Pivert.setText(document.querySelector('#form-status'),
-      'Votre demande est préparée. Finalisez l’envoi dans votre application courriel. Si elle ne s’ouvre pas, contactez directement info@pivert.ca.');
+      locallySaved?'Demande enregistrée dans ce navigateur. Pour l’envoyer à Pivert, finalisez l’envoi dans votre application courriel.':'Enregistrement local impossible. Pour envoyer votre demande à Pivert, finalisez l’envoi dans votre application courriel.');
   });
 };
