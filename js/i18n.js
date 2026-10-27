@@ -39,10 +39,10 @@
     document.documentElement.lang = Pivert.language;
     document.title = Pivert.t('Pivert — Trouvez votre espace');
     const descriptions = {
-      fr:'Pivert : location résidentielle et commerciale, déménagement et nettoyage.',
-      en:'Pivert: residential and commercial rentals, moving and cleaning services.',
-      ru:'Pivert: аренда жилья и коммерческих помещений, переезд и уборка.',
-      es:'Pivert: alquiler de viviendas y locales comerciales, mudanzas y limpieza.'
+      fr:'Pivert : gestion immobilière pour propriétaires, conciergerie pour locataires et déménagement.',
+      en:'Pivert: property management for owners, tenant concierge and moving services.',
+      ru:'Pivert: управление недвижимостью, поддержка жильцов и переезд.',
+      es:'Pivert: gestión inmobiliaria, conserjería para inquilinos y mudanzas.'
     };
     document.querySelector('meta[name="description"]').content = descriptions[Pivert.language];
     Pivert.translate();
